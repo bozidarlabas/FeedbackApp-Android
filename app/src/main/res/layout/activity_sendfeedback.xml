@@ -38,47 +38,22 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/layoutTakeAttachment"
         android:id="@+id/layoutRating">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnRating1Star"
-            android:layout_weight="1"
-            android:text="1"/>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnRating2Star"
-            android:layout_weight="1"
-            android:text="2"/>
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnRating3Star"
-            android:layout_weight="1"
-            android:text="3"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnRating4Star"
-            android:layout_weight="1"
-            android:text="4"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnRating5Star"
-            android:layout_weight="1"
-            android:text="5"/>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

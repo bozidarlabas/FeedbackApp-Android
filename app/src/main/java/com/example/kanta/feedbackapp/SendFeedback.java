@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.Rating;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import java.io.File;
@@ -27,12 +30,12 @@ import java.io.IOException;
  */
 public class SendFeedback extends AppCompatActivity implements View.OnClickListener {
 
-    Button takePicture, takeVideo;
+    Button takePicture, takeVideo,btnSend;
+    EditText feedbackText;
     ImageView displayImage;
-    private static String root = null;
-    private static String imageFolderPath = null;
-    private String imageName = null;
-    private static Uri fileUri = null;
+    RatingBar ratingBar;
+    BitmapDrawable result;
+    Uri videoUri;
     private static final int CAMERA_PIC_REQUEST = 1;
     private static final int CAMERA_VIDEO_REQUEST = 100;
     @Override
@@ -42,6 +45,10 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         takePicture = (Button)findViewById(R.id.btnTakePicture);
         displayImage = (ImageView) findViewById(R.id.displayPicture);
         takeVideo = (Button) findViewById(R.id.btnTakeVideo);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        btnSend = (Button) findViewById(R.id.btnSendFeedback);
+        feedbackText = (EditText) findViewById(R.id.feedbackMessage);
+        btnSend.setOnClickListener(this);
         takeVideo.setOnClickListener(this);
         takePicture.setOnClickListener(this);
     }
@@ -51,12 +58,21 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.btnTakePicture){
             displayImage.setImageDrawable(null);
+            result = null;
+            videoUri = null;
             takePicture();
         }
 
         if(v.getId() == R.id.btnTakeVideo){
             displayImage.setImageDrawable(null);
+            result = null;
+            videoUri = null;
             takeVideo();
+
+        }
+
+        if(v.getId() == R.id.btnSendFeedback){
+            validetData();
 
         }
     }
@@ -85,7 +101,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
                     Bundle extras = data.getExtras();
                     Bitmap thumbnail = (Bitmap) extras.get("data");
 
-                    BitmapDrawable result = new BitmapDrawable(thumbnail);
+                     result = new BitmapDrawable(thumbnail);
 
                     displayImage.setImageDrawable(result);
                     //displayImage.setImageBitmap(thumbnail);
@@ -94,7 +110,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
                 }
             case CAMERA_VIDEO_REQUEST:
                 if(resultCode == RESULT_OK){
-                    Uri videoUri = data.getData();
+                    videoUri = data.getData();
                     Bitmap thumb = ThumbnailUtils.createVideoThumbnail(getRealPathFromURI(this, videoUri),
                             MediaStore.Images.Thumbnails.MINI_KIND);
                     BitmapDrawable bt = new BitmapDrawable(thumb);
@@ -140,5 +156,33 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
         super.onRestoreInstanceState(savedInstanceState);
         //extras.putAll(savedInstanceState);
+    }
+
+    private void validetData(){
+        if (ratingBar.getRating() == 0){
+            Toast.makeText(this,"Rating not set", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String testFeedback = feedbackText.getText().toString();
+        if (testFeedback.matches("")){
+            Toast.makeText(this,"Feedback is empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String uriFound = "";
+        try{
+            uriFound = videoUri.toString();
+            Toast.makeText(this, uriFound,Toast.LENGTH_SHORT).show();
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        if(result == null && uriFound == ""){
+            Toast.makeText(this, "You must upload a picture or a video", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String testMessage = feedbackText.getText().toString() + ":::" + String.valueOf(ratingBar.getRating());
+        Toast.makeText(this,testMessage,Toast.LENGTH_SHORT).show();
     }
 }
