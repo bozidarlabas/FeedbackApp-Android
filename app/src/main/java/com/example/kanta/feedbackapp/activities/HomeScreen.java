@@ -13,6 +13,7 @@ import com.bozidar.microdroid.base.MicroActivity;
 import com.bozidar.microdroid.slidingtab.manager.MicroTabManager;
 import com.example.kanta.feedbackapp.R;
 import com.example.kanta.feedbackapp.fragments.HomeFragment;
+import com.example.kanta.feedbackapp.utils.Constants;
 
 import butterknife.InjectView;
 
@@ -48,6 +49,7 @@ public class HomeScreen extends MicroActivity {
     @Override
     public void init() {
         setupTabs();
+        setupDrawerContent();
     }
 
     /**
@@ -56,8 +58,8 @@ public class HomeScreen extends MicroActivity {
 
     private void setupTabs() {
         MicroTabManager microTabManager = new MicroTabManager(getSupportFragmentManager(), viewPager, tabLayout);
-        microTabManager.addTab(HomeFragment.getInstance("Generation 1"));
-        microTabManager.addTab(HomeFragment.getInstance("Generation 2"));
+        microTabManager.addTab(HomeFragment.getInstance(Constants.ALL_PROJECTS));
+        microTabManager.addTab(HomeFragment.getInstance(Constants.MY_PROJECTS));
         microTabManager.init();
     }
 

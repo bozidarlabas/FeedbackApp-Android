@@ -22,4 +22,8 @@ public class Constants {
 
     public static final String PREFS_NAME = "prefs";
 
+    public static final String ALL_PROJECTS = "All projects";
+
+    public static final String MY_PROJECTS = "My projects";
+
 }

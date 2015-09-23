@@ -7,8 +7,9 @@ import com.bozidar.microdroid.recyclerview.adapter.MicroRecyclerAdapter;
 import com.bozidar.microdroid.recyclerview.item.MicroItem;
 import com.bozidar.microdroid.slidingtab.fragment.MicroTabFrag;
 import com.example.kanta.feedbackapp.R;
+import com.example.kanta.feedbackapp.mvp.view.HomeView;
 
-public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.onMicroItemCLickListener{
+public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.onMicroItemCLickListener, HomeView{
 
 
     private MicroRecyclerAdapter adapter;
@@ -26,15 +27,15 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
 
     public static HomeFragment getInstance(String tabTitle) {
         HomeFragment fragment = new HomeFragment();
-        /*Bundle args = new Bundle();
+        Bundle args = new Bundle();
         args.putString("title", tabTitle);
-        fragment.setArguments(args);*/
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public String setTabTitle() {
-        return "naslov";
+        return getArguments().getString("title");
     }
 
     @Override
