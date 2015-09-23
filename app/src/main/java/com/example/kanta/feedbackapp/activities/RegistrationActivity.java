@@ -1,11 +1,15 @@
 package com.example.kanta.feedbackapp.activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bozidar.microdroid.base.MicroActivity;
 import com.example.kanta.feedbackapp.R;
@@ -13,6 +17,7 @@ import com.example.kanta.feedbackapp.mvp.presenter.LoginPresenter;
 import com.example.kanta.feedbackapp.mvp.presenter.RegistrationPresenter;
 import com.example.kanta.feedbackapp.mvp.presenter.impl.RegistrationPresenterImpl;
 import com.example.kanta.feedbackapp.mvp.view.RegistrationView;
+import com.example.kanta.feedbackapp.utils.Constants;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -123,7 +128,25 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
 
     @Override
     public void navigateToHome() {
+        saveLoginToSharedPrefs();
+        Intent i = new Intent(this, HomeScreen.class);
+        startActivity(i);
+    }
 
+    @Override
+    public void setUsernameExists() {
+        Toast.makeText(this, "Username exists", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setEmailExists() {
+        Toast.makeText(this, "Email exists", Toast.LENGTH_SHORT).show();
+    }
+
+    public void saveLoginToSharedPrefs(){
+        SharedPreferences.Editor editor =  getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString(Constants.SUCCESS_LOGIN, Constants.SUCCESS_LOGIN);
+        editor.apply();
     }
 
 }

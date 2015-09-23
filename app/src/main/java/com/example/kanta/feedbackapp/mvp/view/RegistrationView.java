@@ -23,4 +23,8 @@ public interface RegistrationView {
     public void setBirthDateError();
 
     public void navigateToHome();
+
+    public void setUsernameExists();
+
+    public void setEmailExists();
 }

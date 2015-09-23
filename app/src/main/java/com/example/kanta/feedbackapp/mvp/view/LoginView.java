@@ -13,4 +13,8 @@ public interface LoginView {
     public void setPasswordError();
 
     public void showErrorDialog();
+
+    public void navigateToHome();
+
+    public void setWrongAuthentication();
 }

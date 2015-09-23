@@ -19,7 +19,6 @@ public interface OnRegistrationFinishedListener {
 
         public void onBirthDateError();
 
-
         public void onSuccess(String serverResponse);
 
 }

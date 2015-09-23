@@ -22,4 +22,11 @@ public interface RequestApi {
             @Field("birthDate") String birthDate,
             @Field("registration") String registration,
             Callback<String> response);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/login.php")
+    public void sendLoginRequest(
+            @Field("password") String password,
+            @Field("username") String username,
+            Callback<String> response);
 }

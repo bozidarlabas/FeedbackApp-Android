@@ -1,7 +1,7 @@
 package com.example.kanta.feedbackapp.mvp.presenter.impl;
 
-import com.example.kanta.feedbackapp.mvp.interactor.LoginInteractor;
-import com.example.kanta.feedbackapp.mvp.interactor.impl.LoginInteractorImpl;
+import com.example.kanta.feedbackapp.mvp.interactor.RegisterInteractor;
+import com.example.kanta.feedbackapp.mvp.interactor.impl.RegistrationInteractorImpl;
 import com.example.kanta.feedbackapp.mvp.listener.OnRegistrationFinishedListener;
 import com.example.kanta.feedbackapp.mvp.presenter.RegistrationPresenter;
 import com.example.kanta.feedbackapp.mvp.view.RegistrationView;
@@ -13,17 +13,17 @@ import com.example.kanta.feedbackapp.utils.Constants;
 public class RegistrationPresenterImpl implements RegistrationPresenter, OnRegistrationFinishedListener {
 
     RegistrationView view;
-    LoginInteractor loginInteractor;
+    RegisterInteractor interactor;
 
     public RegistrationPresenterImpl(RegistrationView view){
         this.view = view;
-        loginInteractor = new LoginInteractorImpl();
+        interactor = new RegistrationInteractorImpl();
     }
 
     @Override
     public void validateCredentials(String username, String password, String email, String city, String country, String gender, String birthdate) {
         //view.showProgress();
-        loginInteractor.login(username, password, email, city, country, gender, birthdate, this);
+        interactor.login(username, password, email, city, country, gender, birthdate, this);
     }
 
     @Override public void onUsernameError() {
@@ -69,8 +69,10 @@ public class RegistrationPresenterImpl implements RegistrationPresenter, OnRegis
     @Override public void onSuccess(String serverResponse) {
         switch (serverResponse){
             case Constants.FAILURE_EMAIL:
+                view.setEmailExists();
                 break;
             case Constants.FAILURE_USERNAME:
+                view.setUsernameExists();
                 break;
             case Constants.FAILURE_EMAIL_USERNAME:
                 break;
@@ -78,7 +80,5 @@ public class RegistrationPresenterImpl implements RegistrationPresenter, OnRegis
                 view.navigateToHome();
                 break;
         }
-
-
     }
 }

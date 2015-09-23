@@ -15,4 +15,11 @@ public class Constants {
     public static final String FAILURE_EMAIL_USERNAME = "failed_email_username";
 
     public static final String SUCCESS_REGISTRATION = "success";
+
+    public static final String SUCCESS_LOGIN = "success";
+
+    public static final String FAILURE_LOGIN = "failed";
+
+    public static final String PREFS_NAME = "prefs";
+
 }

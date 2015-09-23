@@ -1,5 +1,6 @@
 package com.bozidar.microdroid.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,10 @@ public abstract class MicroActivity extends AppCompatActivity {
     protected Bundle savedInstanceState;
     private Toolbar toolbar;
 
+    @Override
+    public Context getBaseContext() {
+        return super.getBaseContext();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
