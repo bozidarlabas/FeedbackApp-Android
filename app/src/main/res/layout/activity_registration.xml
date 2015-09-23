@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="com.example.kanta.feedbackapp.activities.RegistrationActivity">
+
+    <EditText
+        android:id="@+id/etemail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/etusername"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/Username"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etcity"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/city"/>
+
+    <EditText
+        android:id="@+id/etcountry"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/country"/>
+
+    <EditText
+        android:id="@+id/etgender"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/gender"/>
+
+    <EditText
+        android:id="@+id/etbirthdate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/birthdate"/>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="OK"/>
+
+</LinearLayout>

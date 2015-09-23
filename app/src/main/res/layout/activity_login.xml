@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:theme="@style/AppTheme">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edit_text_edge"
+            android:ems="10"
+            android:hint="@string/Username"
+            android:padding="5dp"
+            android:textColor="@color/primarycolor"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etUsername"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_edge"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/Password"
+            android:padding="5dp"
+            android:textColor="@color/primarycolor" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/etPassword"
+            android:layout_alignEnd="@+id/etPassword"
+            android:layout_alignLeft="@+id/etPassword"
+            android:layout_alignStart="@+id/etPassword"
+            android:layout_below="@+id/etPassword"
+            android:layout_marginTop="15dp"
+            android:background="@color/accentcolor"
+            android:minHeight="48dp"
+            android:text="@string/Login"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/btnLogin"
+            android:layout_alignEnd="@+id/btnLogin"
+            android:layout_alignLeft="@+id/btnLogin"
+            android:layout_alignStart="@+id/btnLogin"
+            android:layout_below="@+id/btnLogin"
+            android:layout_marginTop="10dp"
+            android:background="@color/accentcolor"
+            android:text="@string/Registration"
+            android:textColor="#FFFFFF" />
+
+        <ProgressBar
+            android:layout_below="@id/btnRegistration"
+            android:id="@+id/pbLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+
+
