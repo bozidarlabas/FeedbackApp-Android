@@ -62,7 +62,7 @@ public class LoginInteractorImpl implements LoginInteractor, Callback<String> {
     @Override
     public void success(String s, Response response) {
         Log.d("odgovor", s);
-        listener.onSuccess();
+        listener.onSuccess(s);
     }
 
     @Override

@@ -17,4 +17,6 @@
     <string name="country">Country</string>
     <string name="gender">Gender</string>
     <string name="birthdate">Birthdate</string>
+    <string name="activity_sendFeedback_takePicture">Take photo</string>
+    <string name="acitivty_sendFeedback_takeVideo">Take video</string>
 </resources>

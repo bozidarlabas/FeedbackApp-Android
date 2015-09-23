@@ -1,4 +1,4 @@
-package com.example.kanta.feedbackapp;
+package com.example.kanta.feedbackapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
+
+import com.example.kanta.feedbackapp.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
