@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="activity_sendFeedback_takePicture">Take photo</string>
+    <string name="acitivty_sendFeedback_takeVideo">Take video</string>
 </resources>
