@@ -17,23 +17,21 @@ import retrofit.client.Response;
  * Created by kanta on 23.09.15..
  */
 public class LoginInteractorImpl implements LoginInteractor, Callback<String> {
-
     private OnLoginFinishedListener listener;
 
     @Override
     public void login(String username, String password, OnLoginFinishedListener listener) {
         boolean error = false;
         this.listener = listener;
-        if (TextUtils.isEmpty(username)){
+        if (TextUtils.isEmpty(username)) {
             listener.onUsernameError();
             error = true;
         }
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             listener.onPasswordError();
             error = true;
         }
-
-        if (!error){
+        if (!error) {
             RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constants.SERVER_ENDPOINT).build();
             RequestApi api = restAdapter.create(RequestApi.class);
             api.sendLoginRequest(password, username, this);
@@ -48,6 +46,5 @@ public class LoginInteractorImpl implements LoginInteractor, Callback<String> {
     @Override
     public void failure(RetrofitError error) {
         Log.d("failure", error.toString());
-
     }
 }

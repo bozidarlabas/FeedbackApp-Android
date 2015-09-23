@@ -11,10 +11,11 @@
         android:src="@drawable/foilogotest"
         android:layout_centerHorizontal="true"
         android:id="@+id/imgLogo"
+        android:layout_marginTop="20dp"
         />
     <EditText
         android:id="@+id/etemail"
-        android:layout_width="260dp"
+        android:layout_width="280dp"
         android:layout_height="40dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -23,7 +24,7 @@
 
     <EditText
         android:id="@+id/etusername"
-        android:layout_width="260dp"
+        android:layout_width="280dp"
         android:layout_centerHorizontal="true"
         android:layout_height="40dp"
         android:hint="@string/Username"
@@ -31,22 +32,29 @@
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="260dp"
+        android:layout_width="280dp"
         android:layout_centerHorizontal="true"
         android:layout_height="40dp"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        android:layout_below="@+id/etusername"/>
+        android:layout_below="@+id/etusername"
+        />
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:layout_below="@+id/etPassword"
     android:id="@+id/layout1"
+    android:orientation="horizontal"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:layout_marginTop="10dp"
+
     >
 
     <EditText
         android:id="@+id/etcity"
         android:layout_width="130dp"
+
         android:layout_centerHorizontal="true"
         android:layout_height="40dp"
         android:hint="@string/city"
@@ -69,21 +77,24 @@
     android:layout_height="40dp"
     android:id="@+id/layout2"
     android:layout_below="@+id/layout1"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:layout_marginTop="10dp">
 
     <Spinner
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_weight="1"
         android:entries="@array/gender"
-        android:id="@+id/genderSpinner"></Spinner>
+        android:id="@+id/etgender"></Spinner>
 
     <Spinner
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_weight="1"
         android:entries="@array/birthYear"
-        android:id="@+id/yearSpinner"></Spinner>
+        android:id="@+id/etbirthdate"></Spinner>
 
 </LinearLayout>
 
@@ -92,10 +103,12 @@
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="40dp"
         android:text="OK"
         android:layout_below="@+id/layout2"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/highlighted_text_material_light"/>
 
 </RelativeLayout>

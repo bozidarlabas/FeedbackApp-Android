@@ -20,6 +20,7 @@
     <string name="activity_sendFeedback_takePicture">Take photo</string>
     <string name="acitivty_sendFeedback_takeVideo">Take video</string>
     <string-array name="birthYear">
+        <item>Year</item>
         <item>1985</item>
         <item>1986</item>
         <item>1987</item>
@@ -30,8 +31,9 @@
         <item>1992</item>
     </string-array>
     <string-array name="gender">
-        <item>M</item>
-        <item>F</item>
+        <item>Gender</item>
+        <item>Female</item>
+        <item>Male</item>
 
     </string-array>
 </resources>

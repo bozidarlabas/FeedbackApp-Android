@@ -44,11 +44,11 @@ public class RegistrationInteractorImpl implements RegisterInteractor, Callback<
             listener.onCountryError();
             error = true;
         }
-        if (TextUtils.isEmpty(gender)){
+        if (gender == "g"){
             listener.onGenderError();
             error = true;
         }
-        if (TextUtils.isEmpty(birthDate)){
+        if (birthDate.matches("Year")){
             listener.onBirthDateError();
             error = true;
         }

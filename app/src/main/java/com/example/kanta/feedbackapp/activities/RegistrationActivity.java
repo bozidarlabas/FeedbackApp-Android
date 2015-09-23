@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,10 +41,10 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
     TextView etcountry;
 
     @InjectView(R.id.etgender)
-    TextView etgender;
+    Spinner etgender;
 
     @InjectView(R.id.etbirthdate)
-    TextView etbirthdate;
+    Spinner etbirthdate;
 
     private RegistrationPresenter presenter;
 
@@ -76,9 +77,10 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
         String password = etPassword.getText().toString();
         String city = etcity.getText().toString();
         String country = etcountry.getText().toString();
-        String gender = etgender.getText().toString();
-        String birthDate = etbirthdate.getText().toString();
-        presenter.validateCredentials(username, password, email, city, country, gender, birthDate);
+        String gender = etgender.getSelectedItem().toString();
+        String gender1 = String.valueOf(gender.charAt(0)).toLowerCase();
+        String birthDate = etbirthdate.getSelectedItem().toString();
+        presenter.validateCredentials(username, password, email, city, country, gender1, birthDate);
     }
 
     @Override
@@ -118,12 +120,12 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
 
     @Override
     public void setGenderError() {
-        etgender.setError("Gender is empty");
+
     }
 
     @Override
     public void setBirthDateError() {
-        etbirthdate.setError("BirthDate is empty");
+
     }
 
     @Override
