@@ -1,58 +1,101 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context="com.example.kanta.feedbackapp.activities.RegistrationActivity">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/foilogotest"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imgLogo"
+        />
     <EditText
         android:id="@+id/etemail"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="40dp"
         android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imgLogo"/>
 
     <EditText
         android:id="@+id/etusername"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
-        android:hint="@string/Username"/>
+        android:hint="@string/Username"
+        android:layout_below="@+id/etemail"/>
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
         android:hint="@string/Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:layout_below="@+id/etusername"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_below="@+id/etPassword"
+    android:id="@+id/layout1"
+    >
 
     <EditText
         android:id="@+id/etcity"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
-        android:hint="@string/city"/>
+        android:hint="@string/city"
+        android:layout_weight="1"
+        />
 
     <EditText
         android:id="@+id/etcountry"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
-        android:hint="@string/country"/>
+        android:hint="@string/country"
+        android:layout_weight="1"
+        />
 
-    <EditText
-        android:id="@+id/etgender"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="@string/gender"/>
+</LinearLayout>
 
-    <EditText
-        android:id="@+id/etbirthdate"
-        android:layout_width="match_parent"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:id="@+id/layout2"
+    android:layout_below="@+id/layout1"
+    android:orientation="horizontal">
+
+    <Spinner
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:hint="@string/birthdate"/>
+        android:layout_weight="1"
+        android:entries="@array/gender"
+        android:id="@+id/genderSpinner"></Spinner>
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:entries="@array/birthYear"
+        android:id="@+id/yearSpinner"></Spinner>
+
+</LinearLayout>
+
+
+
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="OK"/>
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:text="OK"
+        android:layout_below="@+id/layout2"
+        android:layout_centerHorizontal="true"/>
 
-</LinearLayout>
+</RelativeLayout>
