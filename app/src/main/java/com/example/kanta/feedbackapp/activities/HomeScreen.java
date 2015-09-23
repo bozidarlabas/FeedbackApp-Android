@@ -1,15 +1,34 @@
 package com.example.kanta.feedbackapp.activities;
 
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.bozidar.microdroid.base.MicroActivity;
+import com.bozidar.microdroid.slidingtab.manager.MicroTabManager;
 import com.example.kanta.feedbackapp.R;
+import com.example.kanta.feedbackapp.fragments.HomeFragment;
+
+import butterknife.InjectView;
 
 public class HomeScreen extends MicroActivity {
 
+    @InjectView(R.id.nav_view)
+    NavigationView navigationView;
+
+    @InjectView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
+    @InjectView(R.id.pagermy)
+    ViewPager viewPager;
+
+    @InjectView(R.id.tabLayout)
+    TabLayout tabLayout;
 
     @Override
     public int setupToolbar() {
@@ -28,6 +47,33 @@ public class HomeScreen extends MicroActivity {
 
     @Override
     public void init() {
+        setupTabs();
+    }
 
+    /**
+     * Setup tabs
+     */
+
+    private void setupTabs() {
+        MicroTabManager microTabManager = new MicroTabManager(getSupportFragmentManager(), viewPager, tabLayout);
+        microTabManager.addTab(HomeFragment.getInstance("Generation 1"));
+        microTabManager.addTab(HomeFragment.getInstance("Generation 2"));
+        microTabManager.init();
+    }
+
+    /**
+     * Method for checking clicked items in Navigation Drawer
+     */
+    private void setupDrawerContent() {
+        if(navigationView != null){
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(MenuItem menuItem) {
+                    menuItem.setChecked(true);
+                    drawerLayout.closeDrawers();
+                    return true;
+                }
+            });
+        }
     }
 }
