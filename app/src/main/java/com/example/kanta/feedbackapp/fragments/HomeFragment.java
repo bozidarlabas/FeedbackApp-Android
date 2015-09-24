@@ -90,11 +90,22 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
 
     @Override
     public void microItemClicked(View view, MicroItem item) {
-        Intent i = new Intent(getMicroActivity(), SendFeedback.class);
-        String clickedProjectId = String.valueOf(((ProjectItem) item).getProject().getId());
-        Log.d("klikk", String.valueOf(((ProjectItem) item).getProject().getId()));
-        i.putExtra("project_id", clickedProjectId);
-        getMicroActivity().startActivity(i);
+
+        String projectType = getArguments().getString("title");
+        if(projectType != null){
+            switch(projectType){
+                case Constants.ALL_PROJECTS:
+                    presenter.loadAllProjects(getUsername());
+                    break;
+                case Constants.MY_PROJECTS:
+                    presenter.loadMyProjects();
+                    goToFeedback(item);
+                    break;
+            }
+        }
+
+
+
     }
 
     @Override
@@ -120,5 +131,15 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
     public String getUsername(){
         SharedPreferences prefs = getMicroActivity().getSharedPreferences(Constants.PREFS_NAME, getMicroActivity().MODE_PRIVATE);
         return prefs.getString(Constants.SUCCESS_LOGIN, "");
+    }
+
+
+    public void goToFeedback(MicroItem item){
+
+        Intent i = new Intent(getMicroActivity(), SendFeedback.class);
+        String clickedProjectId = String.valueOf(((ProjectItem) item).getProject().getId());
+        Log.d("klikk", String.valueOf(((ProjectItem) item).getProject().getId()));
+        i.putExtra("project_id", clickedProjectId);
+        getMicroActivity().startActivity(i);
     }
 }

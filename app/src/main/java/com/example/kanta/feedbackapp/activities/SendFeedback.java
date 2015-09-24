@@ -37,7 +37,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     ImageView displayImage;
     RatingBar ratingBar;
     BitmapDrawable result;
-    Uri videoUri;
+    Uri videoUri,imageUri;
     private static final int CAMERA_PIC_REQUEST = 1;
     private static final int CAMERA_VIDEO_REQUEST = 100;
     private FeedbackPresenter presenter;
@@ -72,6 +72,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
             displayImage.setImageDrawable(null);
             result = null;
             videoUri = null;
+            imageUri = null;
             takePicture();
         }
 
@@ -79,6 +80,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
             displayImage.setImageDrawable(null);
             result = null;
             videoUri = null;
+            imageUri = null;
             takeVideo();
 
         }
@@ -135,8 +137,8 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
                     Bundle extras = data.getExtras();
                     Bitmap thumbnail = (Bitmap) extras.get("data");
-                    Uri videoUri1 = data.getData();
-                    Toast.makeText(this,getRealPathFromURI(this,videoUri1),Toast.LENGTH_SHORT).show();
+                    imageUri = data.getData();
+                    //Toast.makeText(this,getRealPathFromURI(this,videoUri1),Toast.LENGTH_SHORT).show();
                     result = new BitmapDrawable(thumbnail);
 
                     displayImage.setImageDrawable(result);
