@@ -8,7 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import com.bozidar.microdroid.recyclerview.adapter.MicroRecyclerAdapter;
 import com.bozidar.microdroid.recyclerview.item.MicroItem;
 import com.bozidar.microdroid.slidingtab.fragment.MicroTabFrag;
@@ -27,6 +30,7 @@ import java.util.List;
 import javax.sql.RowSetReader;
 
 import butterknife.InjectView;
+import retrofit.RestAdapter;
 
 public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.onMicroItemCLickListener, HomeView{
 
@@ -89,17 +93,19 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
     }
 
     @Override
-    public void microItemClicked(View view, MicroItem item) {
+    public void microItemClicked(View view, MicroItem item, int index) {
 
         String projectType = getArguments().getString("title");
         if(projectType != null){
             switch(projectType){
                 case Constants.ALL_PROJECTS:
-                    presenter.loadAllProjects(getUsername());
+
                     removeProjectFromPublicList(item);
+                    Log.i("TESADSADASD", String.valueOf(index));
+                    //removeProjectFromPublicList(view);
+
                     break;
                 case Constants.MY_PROJECTS:
-                    presenter.loadMyProjects();
                     goToFeedback(item);
                     break;
             }
@@ -147,6 +153,9 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
     }
 
     public void removeProjectFromPublicList(MicroItem item){
-
+        int index =  Integer.valueOf(((ProjectItem) item).getProject().getId());
+        adapter.removeItem(index);
     }
+
+
 }

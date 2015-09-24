@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -82,7 +83,7 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
     }
 
     public interface onMicroItemCLickListener{
-        public void microItemClicked(View view, MicroItem item);
+        public void microItemClicked(View view, MicroItem item,int index);
     }
 
     public List<MicroItem> getItems(){
@@ -101,6 +102,11 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
 
     public void removeItems(){
         this.items.clear();
+        this.notifyDataSetChanged();
+    }
+
+    public void removeItem(int index){
+        this.items.remove(index);
         this.notifyDataSetChanged();
     }
 

@@ -1,6 +1,7 @@
 package com.bozidar.microdroid.recyclerview.holder;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,7 +35,9 @@ public class MicroViewHolder extends RecyclerView.ViewHolder implements View.OnC
     @Override
     public void onClick(View view) {
         if(listener != null)
-            listener.microItemClicked(view, item);
+            listener.microItemClicked(view, item,getLayoutPosition());
+            Log.i("ADAPATER POUVIJA", getLayoutPosition()+"");
+
     }
 
     public View getView() {

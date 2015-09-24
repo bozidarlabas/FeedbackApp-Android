@@ -111,8 +111,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     public void sendRequest() {
         String feedback = feedbackText.getText().toString();
         String rating = String.valueOf(ratingBar.getRating());
-        String lat = "20.23";
-        String lon = "21.24";
+
         String multimediaUri = "";
         if(videoUri != null)
             multimediaUri = getRealPathFromURI(this,videoUri);
@@ -120,7 +119,9 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
             multimediaUri = getRealPathFromURI(this, imageUri);
 
 
-
+        String[] userLocation = getUserLocation();
+        String lat = userLocation[0];
+        String lon = userLocation[1];
         String username = getUsername();
 
 
