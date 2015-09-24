@@ -1,5 +1,8 @@
 package com.example.kanta.feedbackapp.activities;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bozidar.microdroid.base.MicroActivity;
 import com.bozidar.microdroid.recyclerview.adapter.MicroRecyclerAdapter;
@@ -88,6 +92,9 @@ public class HomeScreen extends MicroActivity{
                 @Override
                 public boolean onNavigationItemSelected(MenuItem menuItem) {
                     menuItem.setChecked(true);
+                    if(menuItem.getItemId() == R.id.nav_home){
+                        checkMeOut();
+                    }
                     drawerLayout.closeDrawers();
                     return true;
                 }
@@ -95,7 +102,15 @@ public class HomeScreen extends MicroActivity{
         }
     }
 
+    public void checkMeOut(){
+        //Toast.makeText(this,"dsadsadsda",Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor editor =  getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString(Constants.SUCCESS_LOGIN, "");
+        editor.apply();
+        Intent i = new Intent(HomeScreen.this, LoginActivity.class);
+        startActivity(i);
 
+    }
 
 
 }
