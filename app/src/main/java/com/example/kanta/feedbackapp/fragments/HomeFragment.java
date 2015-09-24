@@ -96,6 +96,7 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
             switch(projectType){
                 case Constants.ALL_PROJECTS:
                     presenter.loadAllProjects(getUsername());
+                    removeProjectFromPublicList(item);
                     break;
                 case Constants.MY_PROJECTS:
                     presenter.loadMyProjects();
@@ -125,7 +126,11 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
 
 
         for (ProjectModel project : projects) {
-            ProjectItem projectItem = new ProjectItem(project);
+            ProjectItem projectItem = null;
+            if(getArguments().getString("title").equals(Constants.MY_PROJECTS))
+                projectItem = new ProjectItem(project, true);
+            else
+                projectItem = new ProjectItem(project, false);
             adapter.addItem(projectItem);
         }
     }
@@ -142,5 +147,9 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
         Log.d("klikk", String.valueOf(((ProjectItem) item).getProject().getId()));
         i.putExtra("project_id", clickedProjectId);
         getMicroActivity().startActivity(i);
+    }
+
+    public void removeProjectFromPublicList(MicroItem item){
+
     }
 }
