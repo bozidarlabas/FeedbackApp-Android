@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,6 +27,12 @@ import com.example.kanta.feedbackapp.mvp.presenter.FeedbackPresenter;
 import com.example.kanta.feedbackapp.mvp.presenter.impl.FeedbackPresenterImpl;
 import com.example.kanta.feedbackapp.mvp.view.FeedbackView;
 import com.example.kanta.feedbackapp.utils.Constants;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by boogiepop on 23.09.15..
@@ -106,6 +113,11 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         String rating = String.valueOf(ratingBar.getRating());
         String lat = "20.23";
         String lon = "21.24";
+        String multimediaUri = "";
+        if(videoUri != null)
+            multimediaUri = getRealPathFromURI(this,videoUri);
+        else if(imageUri != null)
+            multimediaUri = getRealPathFromURI(this, imageUri);
 
 
 
@@ -119,7 +131,30 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         Log.d("adsadasdratsad", username);
         Log.d("adsadasdratsad", clickedProjectId);
 
-        presenter.sendFeedback(feedback, rating, lat, lon, username, clickedProjectId);
+        presenter.sendFeedback(feedback, rating, lat, lon, username,multimediaUri, clickedProjectId);
+    }
+
+
+
+    private File createImageFile(Uri mUri) throws IOException {
+        // Create the Image File name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+
+        File storageDir = Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+        File image = File.createTempFile(
+                imageFileName, // Prefix
+                ".jpg", // Suffix
+                storageDir // Directory
+        );
+
+        // Save the file, path for ACTION_VIEW intents
+        //mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mUri = Uri.fromFile(image);
+
+        return image;
     }
 
     public void takePicture() {
@@ -158,6 +193,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
             case CAMERA_VIDEO_REQUEST:
                 if (resultCode == RESULT_OK) {
                     videoUri = data.getData();
+                    //Toast.makeText(this,getRealPathFromURI(this,videoUri),Toast.LENGTH_LONG).show();
                     Bitmap thumb = ThumbnailUtils.createVideoThumbnail(getRealPathFromURI(this, videoUri),
                             MediaStore.Images.Thumbnails.MINI_KIND);
                     BitmapDrawable bt = new BitmapDrawable(thumb);

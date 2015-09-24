@@ -104,9 +104,6 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
                     break;
             }
         }
-
-
-
     }
 
     @Override

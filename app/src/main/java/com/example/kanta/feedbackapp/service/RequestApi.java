@@ -9,6 +9,7 @@ import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.Part;
 import retrofit.mime.TypedFile;
 
 /**
@@ -36,17 +37,17 @@ public interface RequestApi {
             @Field("username") String username,
             Callback<String> response);
 
-    @FormUrlEncoded
-    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    @Multipart
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects1.php")
     public void sendFeedback(
-            @Field("sendfeedback") String sendFeedbak,
-            @Field("feedback") String feedback,
-            @Field("rating") String rating,
-            @Field("lat") String latitude,
-            @Field("long") String longitude,
-            @Field("username") String username,
-            @Field("project_id") String projectId,
-           // @Field("attachment") TypedFile attachment,
+            @Part("sendfeedback") String sendFeedbak,
+            @Part("feedback") String feedback,
+            @Part("rating") String rating,
+            @Part("lat") String latitude,
+            @Part("long") String longitude,
+            @Part("username") String username,
+            @Part("project_id") String projectId,
+            @Part("multimedia") TypedFile attachment,
             Callback<String> response);
 
     @FormUrlEncoded
@@ -62,4 +63,6 @@ public interface RequestApi {
             @Field("myprojects") String allProjects,
             @Field("username") String username,
             Callback<List<ProjectModel>> projects);
+
+
 }
