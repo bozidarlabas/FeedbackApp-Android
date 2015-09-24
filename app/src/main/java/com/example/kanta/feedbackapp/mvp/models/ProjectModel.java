@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ProjectModel {
 
-    public static final String ID = "id";
+    public static final String ID = "idprojects";
     public static final String NAME = "name";
     public static final String RATING = "rating";
 

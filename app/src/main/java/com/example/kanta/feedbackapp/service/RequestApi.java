@@ -36,11 +36,10 @@ public interface RequestApi {
             @Field("username") String username,
             Callback<String> response);
 
-    @Multipart
     @FormUrlEncoded
-    @POST("/WebDiP/2013_projekti/WebDiP2013_038/login.php")
-    public void sendFeedbak(
-            @Field("sendFeedback") String sendFeedbak,
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void sendFeedback(
+            @Field("sendfeedback") String sendFeedbak,
             @Field("feedback") String feedback,
             @Field("rating") String rating,
             @Field("lat") String latitude,

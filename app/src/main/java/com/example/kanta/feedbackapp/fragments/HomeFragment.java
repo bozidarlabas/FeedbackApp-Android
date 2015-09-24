@@ -87,12 +87,13 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
         return R.layout.fragment_home;
     }
 
-
-
     @Override
     public void microItemClicked(View view, MicroItem item) {
-        //Log.d("klinut je", ((ProjectItem) item).getProject().getName());
-        getMicroActivity().startActivity(new Intent(getMicroActivity(), SendFeedback.class));
+        Intent i = new Intent(getMicroActivity(), SendFeedback.class);
+        String clickedProjectId = String.valueOf(((ProjectItem) item).getProject().getId());
+        Log.d("klikk", String.valueOf(((ProjectItem) item).getProject().getId()));
+        i.putExtra("project_id", clickedProjectId);
+        getMicroActivity().startActivity(i);
     }
 
     @Override

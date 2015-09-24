@@ -5,8 +5,8 @@ package com.example.kanta.feedbackapp.mvp.view;
  */
 public interface FeedbackView {
 
-    public void onSuccess();
+    public void onSuccess(String response);
 
-    public void onFailure();
+    public void onFailure(String response);
 
 }

@@ -27,8 +27,6 @@ public class LoginActivity extends MicroActivity implements LoginView {
 
     LoginPresenter presenter;
 
-
-
     //Implemented methods
 
     @Override
@@ -93,8 +91,6 @@ public class LoginActivity extends MicroActivity implements LoginView {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
         presenter.validateCredentials(username, password);
-
-
     }
 
     @OnClick(R.id.btnRegistration)
@@ -107,7 +103,7 @@ public class LoginActivity extends MicroActivity implements LoginView {
 
     public void saveLoginToSharedPrefs(){
         SharedPreferences.Editor editor =  getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putString(Constants.SUCCESS_LOGIN, Constants.SUCCESS_LOGIN);
+        editor.putString(Constants.SUCCESS_LOGIN, etUsername.getText().toString());
         editor.apply();
     }
 }

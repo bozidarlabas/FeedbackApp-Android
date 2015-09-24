@@ -2,6 +2,7 @@ package com.example.kanta.feedbackapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +20,10 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.kanta.feedbackapp.R;
+import com.example.kanta.feedbackapp.mvp.presenter.FeedbackPresenter;
+import com.example.kanta.feedbackapp.mvp.presenter.impl.FeedbackPresenterImpl;
 import com.example.kanta.feedbackapp.mvp.view.FeedbackView;
+import com.example.kanta.feedbackapp.utils.Constants;
 
 /**
  * Created by boogiepop on 23.09.15..
@@ -33,6 +38,8 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     Uri videoUri;
     private static final int CAMERA_PIC_REQUEST = 1;
     private static final int CAMERA_VIDEO_REQUEST = 100;
+    private FeedbackPresenter presenter;
+    private String clickedProjectId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,11 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         btnSend.setOnClickListener(this);
         takeVideo.setOnClickListener(this);
         takePicture.setOnClickListener(this);
+        presenter = new FeedbackPresenterImpl(this);
+
+
+        clickedProjectId = getIntent().getExtras().getString("project_id", "0");
+
     }
 
 
@@ -74,7 +86,21 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     }
 
     public void sendRequest() {
+        String feedback = feedbackText.getText().toString();
+        String rating = String.valueOf(ratingBar.getRating());
+        String lat = "20.23";
+        String lon = "21.24";
+        String username = getUsername();
 
+
+
+        Log.d("adsadasdratsad", feedback);
+        Log.d("adsadasdratsad", lat);
+        Log.d("adsadasdratsad", lon);
+        Log.d("adsadasdratsad", username);
+        Log.d("adsadasdratsad", clickedProjectId);
+
+        presenter.sendFeedback(feedback, rating, lat, lon, username, clickedProjectId);
     }
 
     public void takePicture() {
@@ -170,8 +196,11 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         }
         String uriFound = "";
         try {
-            uriFound = videoUri.toString();
-            Toast.makeText(this, uriFound, Toast.LENGTH_SHORT).show();
+            if(videoUri != null){
+                uriFound = videoUri.toString();
+                Toast.makeText(this, uriFound, Toast.LENGTH_SHORT).show();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -184,16 +213,23 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(String response) {
+        Log.d("poslano", response);
         Toast.makeText(this, "Thank you for your feed", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onFailure() {
-
+    public void onFailure(String response) {
+        Log.d("error", response);
+        Toast.makeText(this, "Failed to send feed", Toast.LENGTH_LONG).show();
     }
 
     public void getUserLocation(){
 
+    }
+
+    public String getUsername(){
+        SharedPreferences prefs = getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
+        return prefs.getString(Constants.SUCCESS_LOGIN, "");
     }
 }

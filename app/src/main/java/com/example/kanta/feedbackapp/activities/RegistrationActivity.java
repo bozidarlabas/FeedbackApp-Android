@@ -165,7 +165,7 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
 
     public void saveLoginToSharedPrefs(){
         SharedPreferences.Editor editor =  getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putString(Constants.SUCCESS_LOGIN, Constants.SUCCESS_LOGIN);
+        editor.putString(Constants.SUCCESS_LOGIN, etusername.getText().toString());
         editor.apply();
     }
 
