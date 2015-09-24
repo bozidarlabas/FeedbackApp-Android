@@ -70,11 +70,6 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
         clickedProjectId = getIntent().getExtras().getString("project_id", "0");
 
-        String[] coordinates = getUserLocation();
-
-        Log.d("lat", coordinates[0]);
-        Log.d("long", coordinates[1]);
-
     }
 
 
@@ -120,19 +115,28 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
 
         String[] userLocation = getUserLocation();
-        String lat = userLocation[0];
-        String lon = userLocation[1];
+
+        GPSTracker tracker = new GPSTracker(this);
+
+        Location loc = tracker.getLocation();
+
+
+        double lat = 0;
+        double lon = 0;
+
+        String latResp = "Unavalible";
+        String lonResp = "Unavalible";
+
+        if(loc != null){
+            latResp = String.valueOf(loc.getLatitude());
+            lonResp = String.valueOf(loc.getLongitude());
+        }
+
+
+
         String username = getUsername();
 
-
-
-        Log.d("adsadasdratsad", feedback);
-        Log.d("adsadasdratsad", lat);
-        Log.d("adsadasdratsad", lon);
-        Log.d("adsadasdratsad", username);
-        Log.d("adsadasdratsad", clickedProjectId);
-
-        presenter.sendFeedback(feedback, rating, lat, lon, username,multimediaUri, clickedProjectId);
+        presenter.sendFeedback(feedback, rating, latResp, lonResp, username,multimediaUri, clickedProjectId);
     }
 
 

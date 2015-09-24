@@ -41,6 +41,9 @@ public class FeedbackPresenterImpl implements FeedbackPresenter, Callback<String
     @Override
     public void sendFeedback(String feedback, String rating, String lat, String lon, String username, String multimediaUri, String project_id) {
         Log.d("urriii", multimediaUri);
+
+
+
         TypedFile typedFile = new TypedFile("multipart/form-data", new File(multimediaUri));
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constants.SERVER_ENDPOINT).setLogLevel(RestAdapter.LogLevel.FULL).build();
         api = restAdapter.create(RequestApi.class);
