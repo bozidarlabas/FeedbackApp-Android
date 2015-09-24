@@ -2,6 +2,7 @@ package com.example.kanta.feedbackapp.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -66,7 +67,7 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
         if(projectType != null){
             switch(projectType){
                 case Constants.ALL_PROJECTS:
-                    presenter.loadAllProjects();
+                    presenter.loadAllProjects(getUsername());
                     break;
                 case Constants.MY_PROJECTS:
                     presenter.loadMyProjects();
@@ -115,5 +116,9 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
             ProjectItem projectItem = new ProjectItem(project);
             adapter.addItem(projectItem);
         }
+    }
+    public String getUsername(){
+        SharedPreferences prefs = getMicroActivity().getSharedPreferences(Constants.PREFS_NAME, getMicroActivity().MODE_PRIVATE);
+        return prefs.getString(Constants.SUCCESS_LOGIN, "");
     }
 }

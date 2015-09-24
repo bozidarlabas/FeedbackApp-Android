@@ -25,8 +25,8 @@ public class HomePresenterImpl implements HomePresenter, HomeListener {
     }
 
     @Override
-    public void loadAllProjects() {
-        interactor.loadAllProjects(this);
+    public void loadAllProjects(String username) {
+        interactor.loadAllProjects(this, username);
     }
 
     @Override

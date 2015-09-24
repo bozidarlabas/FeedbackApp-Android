@@ -53,6 +53,7 @@ public interface RequestApi {
     @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
     public void fetchAllProjects(
             @Field("allprojects") String allProjects,
+            @Field("username") String username,
             Callback<List<ProjectModel>> projects);
 
     @FormUrlEncoded

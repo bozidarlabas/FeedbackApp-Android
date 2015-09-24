@@ -24,12 +24,12 @@ public class HomeInteractorImpl implements HomeInteractor, Callback<List<Project
 
 
     @Override
-    public void loadAllProjects(HomeListener listener) {
+    public void loadAllProjects(HomeListener listener, String username) {
         this.listener = listener;
 
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(Constants.SERVER_ENDPOINT).build();
         RequestApi api = restAdapter.create(RequestApi.class);
-        api.fetchAllProjects("allprojects", this);
+        api.fetchAllProjects("allprojects",username, this);
     }
 
     @Override
