@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,11 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
     Spinner etbirthdate;
 
     private RegistrationPresenter presenter;
+    ArrayAdapter<String> yourAdapter;
+    ArrayAdapter<String> yourAdapter2;
+
+    //etgender.setAdapter(yourAdapter);
+   // yourAdapter= new ArrayAdapter<String>(this, R.layout.spinner_item, value);
 
 
 
@@ -68,10 +74,22 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
     @Override
     public void init() {
         presenter = new RegistrationPresenterImpl(this);
+
+        String[] array1 =new String[] {"Gender", "Male", "Female"};
+        String[] array2 = new String [] {"1983","1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992"};
+        yourAdapter= new ArrayAdapter<String>(this, R.layout.spinner_item, array1);
+        yourAdapter.setDropDownViewResource(R.layout.spinnerbackground);
+        etgender.setAdapter(yourAdapter);
+        yourAdapter2= new ArrayAdapter<String>(this, R.layout.spinner_item, array2);
+        yourAdapter2.setDropDownViewResource(R.layout.spinnerbackground);
+        etbirthdate.setAdapter(yourAdapter2);
     }
 
     @OnClick(R.id.btnRegister)
     public void register(View v){
+
+
+
         String username = etusername.getText().toString();
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();

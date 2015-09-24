@@ -192,4 +192,8 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     public void onFailure() {
 
     }
+
+    public void getUserLocation(){
+
+    }
 }
