@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Location;
+import android.location.LocationManager;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ import com.example.kanta.feedbackapp.mvp.view.FeedbackView;
  */
 public class SendFeedback extends AppCompatActivity implements View.OnClickListener, FeedbackView {
 
-    Button takePicture, takeVideo, btnSend;
+    Button takePicture, takeVideo, btnSend, btnCancel;
     EditText feedbackText;
     ImageView displayImage;
     RatingBar ratingBar;
@@ -44,6 +46,8 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         btnSend = (Button) findViewById(R.id.btnSendFeedback);
         feedbackText = (EditText) findViewById(R.id.feedbackMessage);
+        btnCancel = (Button) findViewById(R.id.btnCancelFeedback);
+        btnCancel.setOnClickListener(this);
         btnSend.setOnClickListener(this);
         takeVideo.setOnClickListener(this);
         takePicture.setOnClickListener(this);
@@ -70,6 +74,10 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.btnSendFeedback) {
             if(validetData())
                 sendRequest();
+        }
+
+        if(v.getId() == R.id.btnCancelFeedback){
+            getUserLocation();
         }
     }
 
@@ -159,6 +167,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean validetData() {
+
         if (ratingBar.getRating() == 0) {
             Toast.makeText(this, "Rating not set", Toast.LENGTH_SHORT).show();
             return false;
@@ -193,7 +202,60 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void getUserLocation(){
+    public String[] getUserLocation(){
+        String[] coordinates = new String[2];
+        boolean gpsEnabled = false;
+        boolean networdEnabled = false;
+        LocationManager lm = (LocationManager) this
+                .getSystemService(Context.LOCATION_SERVICE);
+        gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        networdEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        Location net_loc = null, gps_loc = null;
+        if (gpsEnabled){
+            gps_loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if(gps_loc != null){
+                double lat = gps_loc.getLatitude();
+                double lonngi = gps_loc.getLongitude();
+                String stringLat = String.valueOf(lat);
+                String stringLong = String.valueOf(lonngi);
+                coordinates[0] = stringLat;
+                coordinates[1] = stringLong;
+                return coordinates;
+            }
 
+            else{
+                coordinates[0] = "Unavalible";
+                coordinates[1] = "Unavalible";
+                return coordinates;
+            }
+
+        }
+
+         if(networdEnabled){
+            net_loc = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+            if(net_loc != null){
+                double lat = gps_loc.getLatitude();
+                double lonngi = gps_loc.getLongitude();
+                String stringLat = String.valueOf(lat);
+                String stringLong = String.valueOf(lonngi);
+                coordinates[0] = stringLat;
+                coordinates[1] = stringLong;
+                return coordinates;
+            }
+
+             else{
+                coordinates[0] = "Unavalible";
+                coordinates[1] = "Unavalible";
+                return coordinates;
+            }
+
+        }
+
+        else {
+             coordinates[0] = "Unavalible";
+             coordinates[1] = "Unavalible";
+             return coordinates;
+        }
     }
 }
