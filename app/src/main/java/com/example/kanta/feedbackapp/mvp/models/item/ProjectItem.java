@@ -26,10 +26,16 @@ public class ProjectItem implements MicroItem {
     @InjectView(R.id.ratingBar)
     RatingBar ratingBar;
 
+    @InjectView(R.id.checkGroupPicture)
+    ImageView imageView;
+
     private ProjectModel project;
 
-    public ProjectItem(ProjectModel project){
+    private boolean isMyProjectsFragment = false;
+
+    public ProjectItem(ProjectModel project, boolean isMyProjectsFragment){
         this.project = project;
+        this.isMyProjectsFragment = isMyProjectsFragment;
     }
 
     @Override
@@ -41,6 +47,9 @@ public class ProjectItem implements MicroItem {
     public void displayItem(View view, int position, HashMap<String, Integer> color) {
         this.tvProjectName.setText(project.getName());
         this.ratingBar.setRating(Float.parseFloat(project.getRating()));
+        if(isMyProjectsFragment){
+            imageView.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -50,5 +59,13 @@ public class ProjectItem implements MicroItem {
 
     public ProjectModel getProject() {
         return project;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
     }
 }
