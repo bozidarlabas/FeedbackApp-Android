@@ -63,6 +63,11 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
         clickedProjectId = getIntent().getExtras().getString("project_id", "0");
 
+        String[] coordinates = getUserLocation();
+
+        Log.d("lat", coordinates[0]);
+        Log.d("long", coordinates[1]);
+
     }
 
 
@@ -85,14 +90,15 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
         }
 
+
+
+
         if (v.getId() == R.id.btnSendFeedback) {
             if(validetData())
                 sendRequest();
         }
 
-        if(v.getId() == R.id.btnCancelFeedback){
-            getUserLocation();
-        }
+
     }
 
     public void sendRequest() {
@@ -100,6 +106,9 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         String rating = String.valueOf(ratingBar.getRating());
         String lat = "20.23";
         String lon = "21.24";
+
+
+
         String username = getUsername();
 
 

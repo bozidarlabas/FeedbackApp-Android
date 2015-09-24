@@ -99,6 +99,11 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
         this.notifyDataSetChanged();
     }
 
+    public void removeItems(){
+        this.items.clear();
+        this.notifyDataSetChanged();
+    }
+
     public void addItemColor(String itemAttributeName, int color){
         itemColors.put(itemAttributeName, color);
     }

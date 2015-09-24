@@ -110,6 +110,7 @@ public class HomeFragment extends MicroTabFrag implements MicroRecyclerAdapter.o
 
     @Override
     public void showProjects(List<ProjectModel> projects) {
+        adapter.removeItems();
         progressWheel.setVisibility(View.INVISIBLE);
         setRecyclerView(projects);
     }
