@@ -1,5 +1,9 @@
 package com.example.kanta.feedbackapp.service;
 
+import com.example.kanta.feedbackapp.mvp.models.ProjectModel;
+
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
@@ -35,11 +39,27 @@ public interface RequestApi {
     @Multipart
     @FormUrlEncoded
     @POST("/WebDiP/2013_projekti/WebDiP2013_038/login.php")
-    public void sendAllProjects(
+    public void sendFeedbak(
+            @Field("sendFeedback") String sendFeedbak,
             @Field("feedback") String feedback,
-            @Field("rating") float rating,
+            @Field("rating") String rating,
             @Field("lat") String latitude,
             @Field("long") String longitude,
-            @Field("attachment") TypedFile attachment,
+            @Field("username") String username,
+            @Field("project_id") String projectId,
+           // @Field("attachment") TypedFile attachment,
             Callback<String> response);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void fetchAllProjects(
+            @Field("allprojects") String allProjects,
+            Callback<List<ProjectModel>> projects);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void fetchMyrojects(
+            @Field("myprojects") String allProjects,
+            @Field("username") String username,
+            Callback<List<ProjectModel>> projects);
 }

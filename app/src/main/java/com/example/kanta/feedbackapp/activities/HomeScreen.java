@@ -6,18 +6,28 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.bozidar.microdroid.base.MicroActivity;
+import com.bozidar.microdroid.recyclerview.adapter.MicroRecyclerAdapter;
 import com.bozidar.microdroid.slidingtab.manager.MicroTabManager;
 import com.example.kanta.feedbackapp.R;
 import com.example.kanta.feedbackapp.fragments.HomeFragment;
+import com.example.kanta.feedbackapp.mvp.models.ProjectModel;
+import com.example.kanta.feedbackapp.mvp.models.item.ProjectItem;
+import com.example.kanta.feedbackapp.mvp.view.HomeView;
 import com.example.kanta.feedbackapp.utils.Constants;
+import com.pnikosis.materialishprogress.ProgressWheel;
+
+import java.util.List;
 
 import butterknife.InjectView;
 
-public class HomeScreen extends MicroActivity {
+public class HomeScreen extends MicroActivity{
 
     @InjectView(R.id.nav_view)
     NavigationView navigationView;
@@ -30,6 +40,9 @@ public class HomeScreen extends MicroActivity {
 
     @InjectView(R.id.tabLayout)
     TabLayout tabLayout;
+
+
+    private MicroRecyclerAdapter adapter;
 
     @Override
     public int setupToolbar() {
@@ -48,6 +61,9 @@ public class HomeScreen extends MicroActivity {
 
     @Override
     public void init() {
+        if (adapter == null)
+            adapter = new MicroRecyclerAdapter();
+
         setupTabs();
         setupDrawerContent();
     }
@@ -78,4 +94,8 @@ public class HomeScreen extends MicroActivity {
             });
         }
     }
+
+
+
+
 }

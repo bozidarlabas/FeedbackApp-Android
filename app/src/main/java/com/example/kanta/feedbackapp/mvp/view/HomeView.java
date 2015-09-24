@@ -1,5 +1,7 @@
 package com.example.kanta.feedbackapp.mvp.view;
 
+import com.example.kanta.feedbackapp.mvp.models.ProjectModel;
+
 import java.util.List;
 
 /**
@@ -7,7 +9,7 @@ import java.util.List;
  */
 public interface HomeView {
 
-   // void showProjects(List<ProjectModel> projects);
+    void showProjects(List<ProjectModel> projects);
 
    // void goToFeedback(ProjectItem project);
 

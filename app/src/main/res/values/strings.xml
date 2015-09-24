@@ -8,7 +8,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
-    <string name="Login">Login</string>
+    <string name="Login">LogIn</string>
     <string name="Registration">Registration</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_registration">RegistrationActivity</string>

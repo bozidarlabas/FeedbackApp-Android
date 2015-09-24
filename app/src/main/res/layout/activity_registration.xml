@@ -1,114 +1,121 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primaryColor"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="50dp"
     tools:context="com.example.kanta.feedbackapp.activities.RegistrationActivity">
 
+
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/foilogotest"
+        android:id="@+id/headerText"
+        android:layout_width="200dp"
+        android:layout_height="140dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imgLogo"
-        android:layout_marginTop="20dp"
-        />
+        android:src="@drawable/logoregister" />
+
     <EditText
+        android:layout_marginBottom="5dp"
+        android:textColorHint="@color/textColorPrimary"
         android:id="@+id/etemail"
         android:layout_width="280dp"
         android:layout_height="40dp"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
+        android:layout_below="@+id/headerText"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/imgLogo"/>
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
 
     <EditText
+        android:layout_marginBottom="5dp"
+        android:textColorHint="@color/textColorPrimary"
         android:id="@+id/etusername"
         android:layout_width="280dp"
-        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
-        android:hint="@string/Username"
-        android:layout_below="@+id/etemail"/>
+        android:layout_below="@+id/etemail"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/Username" />
 
     <EditText
+        android:layout_marginBottom="5dp"
+        android:textColorHint="@color/textColorPrimary"
         android:id="@+id/etPassword"
         android:layout_width="280dp"
-        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
-        android:hint="@string/Password"
-        android:inputType="textPassword"
         android:layout_below="@+id/etusername"
-        />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_below="@+id/etPassword"
-    android:id="@+id/layout1"
-    android:orientation="horizontal"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
-    android:layout_marginTop="10dp"
-
-    >
-
-    <EditText
-        android:id="@+id/etcity"
-        android:layout_width="130dp"
-
         android:layout_centerHorizontal="true"
+        android:hint="@string/Password"
+        android:inputType="textPassword" />
+
+    <LinearLayout
+        android:layout_marginBottom="5dp"
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="@string/city"
-        android:layout_weight="1"
-        />
+        android:layout_below="@+id/etPassword"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
 
-    <EditText
-        android:id="@+id/etcountry"
-        android:layout_width="130dp"
-        android:layout_centerHorizontal="true"
+        >
+
+        <EditText
+            android:textColorHint="@color/textColorPrimary"
+            android:id="@+id/etcity"
+            android:layout_width="140dp"
+
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:hint="@string/city" />
+
+        <EditText
+            android:textColorHint="@color/textColorPrimary"
+            android:id="@+id/etcountry"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:hint="@string/country" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="@string/country"
-        android:layout_weight="1"
-        />
+        android:layout_below="@+id/layout1"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <Spinner
+            style="@style/mySpinnerItemStyle"
+            android:id="@+id/etgender"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:entries="@array/gender"/>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:id="@+id/layout2"
-    android:layout_below="@+id/layout1"
-    android:orientation="horizontal"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
-    android:layout_marginTop="10dp">
+        <Spinner
+            android:id="@+id/etbirthdate"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:entries="@array/birthYear"/>
 
-    <Spinner
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        android:entries="@array/gender"
-        android:id="@+id/etgender"></Spinner>
-
-    <Spinner
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        android:entries="@array/birthYear"
-        android:id="@+id/etbirthdate"></Spinner>
-
-</LinearLayout>
-
-
+    </LinearLayout>
 
 
     <Button
+        android:layout_height="wrap_content"
         android:id="@+id/btnRegister"
         android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:text="OK"
+        android:minHeight="40dp"
         android:layout_below="@+id/layout2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@color/highlighted_text_material_light"/>
+        android:layout_marginTop="40dp"
+        android:background="@color/primaryColorDark"
+        android:text="Register"
+        android:textColor="@color/textColorPrimary" />
 
 </RelativeLayout>
