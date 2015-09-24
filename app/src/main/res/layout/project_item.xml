@@ -65,13 +65,17 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <ImageView
                 android:id="@+id/tvDistance"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="end"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:src="@drawable/bluecheckmark"
+                />
+
         </LinearLayout>
 
         <View
