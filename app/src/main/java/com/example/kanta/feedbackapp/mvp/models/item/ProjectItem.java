@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bozidar.microdroid.recyclerview.item.MicroItem;
 import com.example.kanta.feedbackapp.R;

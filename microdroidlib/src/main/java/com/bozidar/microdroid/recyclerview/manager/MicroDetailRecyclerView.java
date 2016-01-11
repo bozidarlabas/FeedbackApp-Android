@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.bozidar.microdroid.R;
 import com.bozidar.microdroid.recyclerview.adapter.MicroRecyclerAdapter;
 import com.bozidar.microdroid.recyclerview.api.MicroRecyclerAPI;
 import com.bozidar.microdroid.recyclerview.model.MicroSimpleModel;

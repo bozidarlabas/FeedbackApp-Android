@@ -56,7 +56,8 @@ public abstract class MicroActivity extends AppCompatActivity {
         if (setupToolbar() != 0) {
             Toolbar toolbar = (Toolbar) findViewById(setupToolbar());
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             this.toolbar = toolbar;
         }
     }

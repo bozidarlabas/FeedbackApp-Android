@@ -1,4 +1,4 @@
-package com.example.kanta.feedbackapp.mvp.view;
+package com.example.kanta.feedbackapp.mvp.views;
 
 /**
  * Created by kanta on 24.09.15..

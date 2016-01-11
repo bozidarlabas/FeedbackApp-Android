@@ -1,9 +1,7 @@
 package com.example.kanta.feedbackapp.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.kanta.feedbackapp.R;
 

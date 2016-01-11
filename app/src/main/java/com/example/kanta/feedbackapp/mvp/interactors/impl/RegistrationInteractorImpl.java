@@ -1,10 +1,10 @@
-package com.example.kanta.feedbackapp.mvp.interactor.impl;
+package com.example.kanta.feedbackapp.mvp.interactors.impl;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.kanta.feedbackapp.mvp.interactor.RegisterInteractor;
-import com.example.kanta.feedbackapp.mvp.listener.OnRegistrationFinishedListener;
+import com.example.kanta.feedbackapp.mvp.interactors.RegisterInteractor;
+import com.example.kanta.feedbackapp.mvp.listeners.OnRegistrationFinishedListener;
 import com.example.kanta.feedbackapp.service.RequestApi;
 import com.example.kanta.feedbackapp.utils.Constants;
 

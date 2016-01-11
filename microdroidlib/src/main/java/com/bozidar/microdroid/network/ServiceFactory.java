@@ -1,7 +1,5 @@
 package com.bozidar.microdroid.network;
 
-import android.util.Log;
-
 import retrofit.RestAdapter;
 
 /**

@@ -1,19 +1,15 @@
 package com.bozidar.microdroid.recyclerview.adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.bozidar.microdroid.recyclerview.holder.MicroViewHolder;
 import com.bozidar.microdroid.recyclerview.item.MicroItem;
-import com.bozidar.microdroid.recyclerview.model.MicroSimpleModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +20,9 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
 
     private onMicroItemCLickListener listener;
 
-    private List<MicroItem> items;
+    private ArrayList<MicroItem> items;
+
+    private ArrayList<MicroItem> itemsCopy;
 
     public int colorHeader;
 
@@ -35,6 +33,7 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
     public MicroRecyclerAdapter() {
         listener = null;
         this.items = new ArrayList<>();
+        itemsCopy = new ArrayList<>();
         itemColors = new HashMap<>();
     }
 
@@ -83,14 +82,14 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
     }
 
     public interface onMicroItemCLickListener{
-        public void microItemClicked(View view, MicroItem item,int index);
+        public void microItemClicked(View view, MicroItem item, int index);
     }
 
     public List<MicroItem> getItems(){
         return items;
     }
 
-    public void setItems(List<MicroItem> items){
+    public void setItems(ArrayList<MicroItem> items){
         this.items = items;
         this.notifyDataSetChanged();
     }
@@ -107,11 +106,19 @@ public class MicroRecyclerAdapter extends RecyclerView.Adapter<MicroViewHolder> 
 
     public void removeItem(int index){
         this.items.remove(index);
-        this.notifyDataSetChanged();
+        notifyItemRemoved(index);
     }
+
 
     public void addItemColor(String itemAttributeName, int color){
         itemColors.put(itemAttributeName, color);
+    }
+
+    public void search(String keyword){
+        this.itemsCopy = items;
+        removeItems();
+
+
     }
 }
 

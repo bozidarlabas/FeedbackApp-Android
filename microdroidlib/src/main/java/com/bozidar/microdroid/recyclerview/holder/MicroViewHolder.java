@@ -3,10 +3,7 @@ package com.bozidar.microdroid.recyclerview.holder;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bozidar.microdroid.R;
 import com.bozidar.microdroid.recyclerview.adapter.MicroRecyclerAdapter;
 import com.bozidar.microdroid.recyclerview.item.MicroItem;
 

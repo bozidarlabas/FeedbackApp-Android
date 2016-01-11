@@ -1,77 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/feedbackMessage"/>
-
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:id="@+id/displayPicture"
-        android:layout_below="@+id/feedbackMessage"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/displayPicture"
-        android:id="@+id/layoutTakeAttachment">
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnTakePicture"
-            android:text="@string/activity_sendFeedback_takePicture"
-            android:layout_weight="1"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/btnTakeVideo"
-            android:text="@string/acitivty_sendFeedback_takeVideo"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/layoutTakeAttachment"
-        android:id="@+id/layoutRating">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="80dp">
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/displayPicture"
+            android:layout_width="200dp"
+            android:layout_height="140dp"
             android:layout_centerHorizontal="true"
-            android:numStars="5"
-            android:stepSize="1.0"
-            android:rating="0.0" />
+            android:src="@drawable/logologin" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center|bottom">
+
+            <EditText
+                android:id="@+id/feedbackMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/layoutTakeAttachment"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <Button
+                    android:id="@+id/btnTakePicture"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/activity_sendFeedback_takePicture" />
+
+                <Button
+                    android:id="@+id/btnTakeVideo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/acitivty_sendFeedback_takeVideo" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutRating"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/layoutTakeAttachment">
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:numStars="5"
+                    android:rating="0.0"
+                    android:stepSize="1.0" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutRating">
+
+                <Button
+                    android:id="@+id/btnSendFeedback"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Send" />
+
+                <Button
+                    android:id="@+id/btnCancelFeedback"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Cancel" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layoutRating">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/btnSendFeedback"
-            android:text="Send"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/btnCancelFeedback"
-            android:text="Cancel"/>
-    </LinearLayout>
 
 </RelativeLayout>

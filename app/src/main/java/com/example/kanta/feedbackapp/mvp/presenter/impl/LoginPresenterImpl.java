@@ -1,18 +1,16 @@
 package com.example.kanta.feedbackapp.mvp.presenter.impl;
 
-import com.example.kanta.feedbackapp.mvp.interactor.LoginInteractor;
-import com.example.kanta.feedbackapp.mvp.interactor.RegisterInteractor;
-import com.example.kanta.feedbackapp.mvp.interactor.impl.LoginInteractorImpl;
-import com.example.kanta.feedbackapp.mvp.interactor.impl.RegistrationInteractorImpl;
-import com.example.kanta.feedbackapp.mvp.listener.OnLoginFinishedListener;
+import com.example.kanta.feedbackapp.mvp.interactors.LoginInteractor;
+import com.example.kanta.feedbackapp.mvp.interactors.impl.LoginInteractorImpl;
+import com.example.kanta.feedbackapp.mvp.listeners.OnLoginFinishedListener;
 import com.example.kanta.feedbackapp.mvp.presenter.LoginPresenter;
-import com.example.kanta.feedbackapp.mvp.view.LoginView;
+import com.example.kanta.feedbackapp.mvp.views.LoginView;
 import com.example.kanta.feedbackapp.utils.Constants;
 
 /**
  * Created by kanta on 23.09.15..
  */
-public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener{
+public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener {
 
     LoginView view;
     LoginInteractor interactor;
@@ -23,18 +21,8 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override
-    public void validateCredentials(String username, String password) {
+    public void login(String username, String password) {
         interactor.login(username, password, this);
-    }
-
-    @Override
-    public void onUsernameError() {
-        view.setUsernameError();
-    }
-
-    @Override
-    public void onPasswordError() {
-        view.setPasswordError();
     }
 
     @Override
@@ -47,6 +35,15 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
                 view.setWrongAuthentication();
                 break;
         }
-        //prijelaz u main screen
+    }
+
+    @Override
+    public void onUsernameError() {
+        view.setUsernameError();
+    }
+
+    @Override
+    public void onPasswordError() {
+        view.setPasswordError();
     }
 }

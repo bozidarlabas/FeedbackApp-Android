@@ -2,11 +2,6 @@ package com.example.kanta.feedbackapp.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -15,10 +10,9 @@ import android.widget.Toast;
 
 import com.bozidar.microdroid.base.MicroActivity;
 import com.example.kanta.feedbackapp.R;
-import com.example.kanta.feedbackapp.mvp.presenter.LoginPresenter;
 import com.example.kanta.feedbackapp.mvp.presenter.RegistrationPresenter;
 import com.example.kanta.feedbackapp.mvp.presenter.impl.RegistrationPresenterImpl;
-import com.example.kanta.feedbackapp.mvp.view.RegistrationView;
+import com.example.kanta.feedbackapp.mvp.views.RegistrationView;
 import com.example.kanta.feedbackapp.utils.Constants;
 
 import butterknife.InjectView;
@@ -52,7 +46,7 @@ public class RegistrationActivity extends MicroActivity implements RegistrationV
     ArrayAdapter<String> yourAdapter2;
 
     //etgender.setAdapter(yourAdapter);
-   // yourAdapter= new ArrayAdapter<String>(this, R.layout.spinner_item, value);
+    // yourAdapter= new ArrayAdapter<String>(this, R.layout.spinner_item, value);
 
 
 

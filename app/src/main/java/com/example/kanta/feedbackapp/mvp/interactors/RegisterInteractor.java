@@ -1,6 +1,6 @@
-package com.example.kanta.feedbackapp.mvp.interactor;
+package com.example.kanta.feedbackapp.mvp.interactors;
 
-import com.example.kanta.feedbackapp.mvp.listener.OnRegistrationFinishedListener;
+import com.example.kanta.feedbackapp.mvp.listeners.OnRegistrationFinishedListener;
 
 /**
  * Created by kanta on 23.09.15..

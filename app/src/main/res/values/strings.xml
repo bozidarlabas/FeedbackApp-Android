@@ -10,7 +10,7 @@
     <string name="Password">Password</string>
     <string name="Login">LogIn</string>
     <string name="Registration">Registration</string>
-    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_home_screen">FeedbackApp</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="email">Email</string>
     <string name="city">City</string>
@@ -36,4 +36,5 @@
         <item>Male</item>
 
     </string-array>
+    <string name="title_activity_interests">Interests</string>
 </resources>

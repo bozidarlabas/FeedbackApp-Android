@@ -1,4 +1,4 @@
-package com.example.kanta.feedbackapp.mvp.listener;
+package com.example.kanta.feedbackapp.mvp.listeners;
 
 import com.example.kanta.feedbackapp.mvp.models.ProjectModel;
 
@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface HomeListener {
     void onSuccess(List<ProjectModel> projectModels);
+
+    void projectAdded();
 }

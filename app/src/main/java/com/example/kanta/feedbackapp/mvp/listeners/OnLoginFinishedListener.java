@@ -1,4 +1,4 @@
-package com.example.kanta.feedbackapp.mvp.listener;
+package com.example.kanta.feedbackapp.mvp.listeners;
 
 /**
  * Created by kanta on 23.09.15..

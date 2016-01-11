@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.example.kanta.feedbackapp.R;
 import com.example.kanta.feedbackapp.mvp.presenter.FeedbackPresenter;
 import com.example.kanta.feedbackapp.mvp.presenter.impl.FeedbackPresenterImpl;
-import com.example.kanta.feedbackapp.mvp.view.FeedbackView;
+import com.example.kanta.feedbackapp.mvp.views.FeedbackView;
 import com.example.kanta.feedbackapp.utils.Constants;
 
 import java.io.File;
@@ -53,7 +53,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sendfeedback);
+        setContentView(R.layout.feedback);
         takePicture = (Button) findViewById(R.id.btnTakePicture);
         displayImage = (ImageView) findViewById(R.id.displayPicture);
         takeVideo = (Button) findViewById(R.id.btnTakeVideo);
@@ -315,7 +315,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
 
         }
 
-         if(networdEnabled){
+        if(networdEnabled){
             net_loc = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
             if(net_loc != null){
@@ -328,7 +328,7 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
                 return coordinates;
             }
 
-             else{
+            else{
                 coordinates[0] = "Unavalible";
                 coordinates[1] = "Unavalible";
                 return coordinates;
@@ -337,9 +337,9 @@ public class SendFeedback extends AppCompatActivity implements View.OnClickListe
         }
 
         else {
-             coordinates[0] = "Unavalible";
-             coordinates[1] = "Unavalible";
-             return coordinates;
+            coordinates[0] = "Unavalible";
+            coordinates[1] = "Unavalible";
+            return coordinates;
         }
     }
 

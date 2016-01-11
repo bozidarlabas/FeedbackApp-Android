@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    app:theme="@style/AppTheme">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="80dp">
+
+        <ImageView
+            android:id="@+id/displayPicture"
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo" />
+
+
+        <RelativeLayout
+            android:layout_below="@+id/displayPicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/feedbackMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_text_edge"
+                android:ems="10"
+                android:hint="Feedback"
+                android:padding="5dp"
+                android:textColorHint="#bdbdbd" />
+
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/feedbackMessage"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:numStars="5"
+                android:rating="0.0"
+                android:stepSize="1.0" />
+
+            <LinearLayout
+                android:id="@+id/firstButtons"
+                android:layout_below="@+id/ratingBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/btnTakePicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/primaryColorDark"
+                    android:minHeight="40dp"
+                    android:text="Take Picture"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnTakeVideo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/primaryColorDark"
+                    android:minHeight="40dp"
+                    android:text="Take video"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignEnd="@+id/firstButtons"
+                android:layout_alignLeft="@+id/firstButtons"
+                android:layout_alignRight="@+id/firstButtons"
+                android:layout_alignStart="@+id/firstButtons"
+                android:layout_below="@+id/firstButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/btnSendFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/primaryColorDark"
+                    android:minHeight="40dp"
+                    android:text="Send feedback"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btnCancelFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/primaryColorDark"
+                    android:minHeight="40dp"
+                    android:text="Cancel"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+
+
+            <ProgressBar
+                android:id="@+id/pbLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnRegistration"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+
+

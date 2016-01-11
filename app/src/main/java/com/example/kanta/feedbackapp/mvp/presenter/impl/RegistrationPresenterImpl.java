@@ -1,10 +1,10 @@
 package com.example.kanta.feedbackapp.mvp.presenter.impl;
 
-import com.example.kanta.feedbackapp.mvp.interactor.RegisterInteractor;
-import com.example.kanta.feedbackapp.mvp.interactor.impl.RegistrationInteractorImpl;
-import com.example.kanta.feedbackapp.mvp.listener.OnRegistrationFinishedListener;
+import com.example.kanta.feedbackapp.mvp.interactors.RegisterInteractor;
+import com.example.kanta.feedbackapp.mvp.interactors.impl.RegistrationInteractorImpl;
+import com.example.kanta.feedbackapp.mvp.listeners.OnRegistrationFinishedListener;
 import com.example.kanta.feedbackapp.mvp.presenter.RegistrationPresenter;
-import com.example.kanta.feedbackapp.mvp.view.RegistrationView;
+import com.example.kanta.feedbackapp.mvp.views.RegistrationView;
 import com.example.kanta.feedbackapp.utils.Constants;
 
 /**

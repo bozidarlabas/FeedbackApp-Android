@@ -3,7 +3,7 @@ package com.example.kanta.feedbackapp.mvp.presenter.impl;
 import android.util.Log;
 
 import com.example.kanta.feedbackapp.mvp.presenter.FeedbackPresenter;
-import com.example.kanta.feedbackapp.mvp.view.FeedbackView;
+import com.example.kanta.feedbackapp.mvp.views.FeedbackView;
 import com.example.kanta.feedbackapp.service.RequestApi;
 import com.example.kanta.feedbackapp.utils.Constants;
 

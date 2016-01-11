@@ -1,5 +1,6 @@
 package com.example.kanta.feedbackapp.service;
 
+import com.example.kanta.feedbackapp.mvp.models.InterestModel;
 import com.example.kanta.feedbackapp.mvp.models.ProjectModel;
 
 import java.util.List;
@@ -64,5 +65,57 @@ public interface RequestApi {
             @Field("username") String username,
             Callback<List<ProjectModel>> projects);
 
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void addNewProject(
+            @Field("addproject") String addProject,
+            @Field("username") String username,
+            @Field("projectid") String projectId,
+            Callback<String> projects);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void getPublicProjects(
+            @Field("publicprojects") String addProject,
+            @Field("username") String username,
+            Callback<List<ProjectModel>> projects);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void getPrivateProjects(
+            @Field("privateprojects") String addProject,
+            @Field("username") String username,
+            Callback<List<ProjectModel>> projects);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void getSearchAllProjects(
+            @Field("searchallprojects") String searchallprojects,
+            @Field("username") String username,
+            @Field("keyword") String keyword,
+            Callback<List<ProjectModel>> projects);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void getSearchMyProjects(
+            @Field("username") String username,
+            @Field("filter") String filter,
+            @Field("keyword") String keyword,
+            Callback<List<ProjectModel>> projects);
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void fetchAllProjectsTest(
+            @Field("allprojectstest") String allProjects,
+            @Field("username") String username,
+            Callback<List<ProjectModel>> projects);
+
+
+    @FormUrlEncoded
+    @POST("/WebDiP/2013_projekti/WebDiP2013_038/projects.php")
+    public void fetchAllInterests(
+            @Field("interests") String interests,
+            @Field("username") String username,
+            Callback<List<InterestModel>> projects);
 
 }

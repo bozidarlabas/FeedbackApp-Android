@@ -1,10 +1,10 @@
-package com.example.kanta.feedbackapp.mvp.interactor.impl;
+package com.example.kanta.feedbackapp.mvp.interactors.impl;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.kanta.feedbackapp.mvp.interactor.LoginInteractor;
-import com.example.kanta.feedbackapp.mvp.listener.OnLoginFinishedListener;
+import com.example.kanta.feedbackapp.mvp.interactors.LoginInteractor;
+import com.example.kanta.feedbackapp.mvp.listeners.OnLoginFinishedListener;
 import com.example.kanta.feedbackapp.service.RequestApi;
 import com.example.kanta.feedbackapp.utils.Constants;
 
@@ -48,3 +48,4 @@ public class LoginInteractorImpl implements LoginInteractor, Callback<String> {
         Log.d("failure", error.toString());
     }
 }
+
